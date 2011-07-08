@@ -1,5 +1,5 @@
 module Resque
   class Pool
-    VERSION = "0.3.1.dev"
+    VERSION = "0.3.2.dev"
   end
 end
