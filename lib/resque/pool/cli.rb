@@ -7,13 +7,14 @@ module Resque
       extend Logging
       extend self
 
-      def run
+      def run(options={})
         opts = parse_options
+        opts.merge!(options)
         daemonize if opts[:daemon]
         manage_pidfile opts[:pidfile]
         redirect opts
         setup_environment opts
-        start_pool
+        Resque::Pool.run
       end
 
       def parse_options
@@ -102,15 +103,6 @@ where [options] are:
         ENV["RESQUE_POOL_CONFIG"] = opts[:config] if opts[:config]
       end
 
-      def start_pool
-        require 'rake'
-        require 'resque/pool/tasks'
-        Rake.application.init
-        Rake.application.load_rakefile
-        Rake.application["resque:pool"].invoke
-      end
-
     end
   end
 end
-
