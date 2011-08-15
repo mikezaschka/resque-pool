@@ -3,12 +3,12 @@ $:.push File.expand_path("../lib", __FILE__)
 require "resque/pool/version"
 
 Gem::Specification.new do |s|
-  s.name        = "vitobotta-resque-pool"
+  s.name        = "mikezaschka-resque-pool"
   s.version     = Resque::Pool::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["nicholas a. evans", "Vito Botta"]
-  s.email       = ["nick@ekenosen.net", "vito@botta.name"]
-  s.homepage    = "https://github.com/vitobotta/resque-pool"
+  s.authors     = ["nicholas a. evans", "Vito Botta", "Mike Zaschka"]
+  s.email       = ["nick@ekenosen.net", "vito@botta.name", "mike.zaschka@dkd.de"]
+  s.homepage    = "https://github.com/mikezaschka/resque-pool"
   s.summary     = "quickly and easily fork a pool of resque workers"
   s.description = <<-EOF
     quickly and easily fork a pool of resque workers,
@@ -16,11 +16,12 @@ Gem::Specification.new do |s|
   EOF
 
   s.add_dependency "resque",  "~> 1.13"
+  s.add_dependency "resque-scheduler"
   s.add_dependency "trollop", "~> 1.16"
   s.add_dependency "rake"
   s.add_development_dependency "rspec",    "~> 2.3.0"
   s.add_development_dependency "cucumber", "~> 0.10.0"
-  s.add_development_dependency "aruba",    "~> 0.3.2" 
+  s.add_development_dependency "aruba",    "~> 0.3.2"
   s.add_development_dependency "SystemTimer" unless RUBY_VERSION =~ /1\.9/ # to silence redis gem's warning
   s.add_development_dependency "bundler", "~> 1.0"
 
